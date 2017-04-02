@@ -69,10 +69,10 @@ cd ~/boxbox
 echo "[*] Provisioning your boxbox"
 vagrant up
 
-if "$SHELL" = "/bin/zsh"; then
-  shell_filepath="~/.zshrc"
+if [ $SHELL == "/bin/zsh" ]; then
+  shell_filepath=~/.zshrc
 else
-  shell_filepath="~/.bash_profile"
+  shell_filepath=~/.bash_profile
 fi
 
 echo "[*] Setting up aliases in $shell_filepath"
