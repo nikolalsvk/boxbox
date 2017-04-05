@@ -79,7 +79,7 @@ alias bhalt="cd ~/boxbox && vagrant halt"
 ## License
 
 The MIT License (MIT)
-Copyright (c) 2016 Nikola Đuza
+Copyright (c) 2016 Igor Šarčević, Nikola Đuza
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"),
