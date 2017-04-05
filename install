@@ -21,6 +21,8 @@ echo "[*] Checking if wget is installed"
 
 if ! (which wget > /dev/null); then
   echo "[!] Please install wget"
+else
+  brew install wget
 fi
 
 # -------------------------------------------------------------------------------------------------------------------------
@@ -31,19 +33,10 @@ if which vboxmanage > /dev/null; then
   version=$(vboxmanage --version)
 
   echo "[*] Virtual Box found: $version"
-
-  if ! [[ "$version" =~ "5.0" ]]; then
-    echo "[!] Expected Virtual Box version 5"
-    exit 1
-  fi
 else
-  echo "[*] Installing Virtual Box version 5"
+  echo "[*] Installing Virtual Box"
 
-  wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-  wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-
-  sudo apt-get update
-  sudo apt-get install -y virtualbox-5.0
+  brew cask install virtualbox
 fi
 
 # -------------------------------------------------------------------------------------------------------------------------
@@ -54,17 +47,10 @@ if which vagrant> /dev/null; then
   version=$(vagrant --version)
 
   echo "[*] Vagrant found: $version"
-
-  if ! [[ "$version" =~ "1.8" ]]; then
-    echo "[!] Expected Vagrant version 1.8"
-    exit 1
-  fi
 else
   echo "[*] Installing Vagrant"
 
-  wget https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb -o /tmp/vagrant_1.8.1_x86_64.deb
-
-  sudo dpkg -i /tmp/vagrant_1.8.1_x86_64.deb
+  brew cask install vagrant
 fi
 
 # -------------------------------------------------------------------------------------------------------------------------
@@ -83,9 +69,15 @@ cd ~/boxbox
 echo "[*] Provisioning your boxbox"
 vagrant up
 
-echo "[*] Setting up aliases in bash_profile"
-echo 'alias bb="cd ~/boxbox && vagrant up && vagrant ssh -c \"tmux -2\""' >> ~/.bash_profile
-echo 'alias bhalt="cd ~/boxbox && vagrant halt' >> ~/.bash_profile >> ~/.bash_profile
+if [ $SHELL == "/bin/zsh" ]; then
+  shell_filepath=~/.zshrc
+else
+  shell_filepath=~/.bash_profile
+fi
+
+echo "[*] Setting up aliases in $shell_filepath"
+echo 'alias bb="cd ~/boxbox && vagrant up && vagrant ssh"' >> $shell_filepath
+echo 'alias bhalt="cd ~/boxbox && vagrant halt"' >> $shell_filepath
 
 echo "[*] Done"
 echo ""
