@@ -19,7 +19,7 @@ The default shell is `zsh`.
 Run the following command:
 
 ``` bash
-curl -L https://raw.githubusercontent.com/shiroyasha/boxbox/master/install | bash
+curl -L https://raw.githubusercontent.com/nikolalsvk/boxbox/master/install | bash
 ```
 
 ![Box Box provisioner](docs/provisioner.png)
@@ -59,7 +59,7 @@ vagrant plugin install vagrant-hostmanager
 Then, clone the directory:
 
 ```
-git clone https://github.com/shiroyasha/boxbox.git ~/boxbox
+git clone https://github.com/nikolalsvk/boxbox.git ~/boxbox
 cd ~/boxbox
 ```
 
