@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -d ~/boxbox ]; then
+if [ -d ~/boxbox ] && [ $CI != "true" ]; then
   echo "[!] ~/boxbox directory exists"
   echo "[!] Box Box is already installed"
   echo "[!] Please remove it before you try to install it again"
