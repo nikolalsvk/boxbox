@@ -11,6 +11,7 @@ sudo apt-get install -qq -y figlet git tmux zsh curl wget build-essential xauth 
 
 wget https://sourceforge.net/projects/ubuntuzilla/files/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_46.0.1-0ubuntu1_amd64.deb
 sudo dpkg -i firefox-mozilla-build_46.0.1-0ubuntu1_amd64.deb
+sudo apt-get install -qq -y firefox
 
 figlet "Box Box"
 
