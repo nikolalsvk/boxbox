@@ -3,8 +3,8 @@
 echo "[PROVISIONER] Installing Basic Tools"
 bash /vagrant/scripts/install_basics.sh
 
-echo "[PROVISIONER] Installing Postgres"
-sudo apt-get install -qq -y postgresql postgresql-contrib > /dev/null
+echo "[PROVISIONER] Installing Postgres and Redis"
+bash /vagrant/scripts/install_redis.sh
 
 echo "[PROVISIONER] Installing Vim"
 bash /vagrant/scripts/install_vim.sh
